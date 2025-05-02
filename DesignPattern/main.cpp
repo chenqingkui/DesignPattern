@@ -128,30 +128,30 @@ int main(int argc, const char * argv[]) {
     
 
     //适配器模式(祼指针模式)
-    adapter::Camera* yuvCamera = new adapter::YUVCamera();
-    adapter::Parser yuvParser(yuvCamera);
-    adapter::Image* yuvImage = yuvParser.getImage();
-    adapter::Camera* rgbCamera = new adapter::RGBCamera();
-    delete yuvCamera;
-    delete yuvImage;
-    yuvParser.setCamera(rgbCamera);
-    adapter::Adapter* adapter = new adapter::RGBAdapter();
-    yuvParser.setAdapter(adapter);
-    yuvImage  = yuvParser.getImage();
-    delete adapter;
-    delete rgbCamera;
+//    adapter::Camera* yuvCamera = new adapter::YUVCamera();
+//    adapter::Parser yuvParser(yuvCamera);
+//    adapter::Image* yuvImage = yuvParser.getImage();
+//    adapter::Camera* rgbCamera = new adapter::RGBCamera();
+//    delete yuvCamera;
+//    delete yuvImage;
+//    yuvParser.setCamera(rgbCamera);
+//    adapter::Adapter* adapter = new adapter::RGBAdapter();
+//    yuvParser.setAdapter(adapter);
+//    yuvImage  = yuvParser.getImage();
+//    delete adapter;
+//    delete rgbCamera;
 
     
-//    auto yuvCamera = std::make_unique<adapter::YUVCamera>();
-//    adapter::Parser yuvParser(std::move(yuvCamera));
-//    auto yuvImage = yuvParser.getImage();
-//
-//    auto rgbCamera = std::make_unique<adapter::RGBCamera>();
-//
-//    yuvParser.setCamera(std::move(rgbCamera));
-//    auto adapter = std::make_unique<adapter::RGBAdapter>();
-//    yuvParser.setAdapter(std::move(adapter));
-//    yuvImage  = yuvParser.getImage();
+    auto yuvCamera = std::make_unique<adapter::YUVCamera>();
+    adapter::Parser yuvParser(std::move(yuvCamera));
+    auto yuvImage = yuvParser.getImage();
+
+    auto rgbCamera = std::make_unique<adapter::RGBCamera>();
+
+    yuvParser.setCamera(std::move(rgbCamera));
+    auto adapter = std::make_unique<adapter::RGBAdapter>();
+    yuvParser.setAdapter(std::move(adapter));
+    yuvImage  = yuvParser.getImage();
 
 
 
