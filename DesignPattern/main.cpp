@@ -170,8 +170,8 @@ int main(int argc, const char * argv[]) {
     //加载memo
     musicPlayer.load(musicCaretaker.getContext()); //load后还原为保存时刻的信息
     
-    musicCaretaker.setContext(nullptr);
-    delete musicCaretaker.getContext();
+    musicCaretaker.setContext(nullptr); //context置空
+    delete musicCaretaker.getContext(); //释放内存
  
     return 0;
 }
