@@ -7,8 +7,8 @@
 
 #ifndef design_pattern_facade_h
 #define design_pattern_facade_h
+#include <iostream>
 namespace facade {
-using namespace std;
 //车辆接口
 class VehiclePart{
 public:
@@ -28,10 +28,10 @@ public:
 class Engine:VehiclePart{
 public:
     void start() override{
-        cout<<"engine start"<<endl;
+        std::cout<<"engine start"<<std::endl;
     }
     void stop() override{
-        cout<<"engine stop"<<endl;
+        std::cout<<"engine stop"<<std::endl;
     }
 };
 
@@ -39,19 +39,19 @@ public:
 class Transmission:VehiclePart{
 public:
     void start() override{
-        cout<<"transmission start"<<endl;
+        std::cout<<"transmission start"<<std::endl;
     }
     void stop() override{
-        cout<<"transmission stop"<<endl;
+        std::cout<<"transmission stop"<<std::endl;
     }
     
     //加速
     void speedUp(){
-        cout<<"transmission speed up"<<endl;
+        std::cout<<"transmission speed up"<<std::endl;
     }
     //减速
     void slowDown(){
-        cout<<"transmission slow down'"<<endl;
+        std::cout<<"transmission slow down'"<<std::endl;
     }
 };
 
@@ -59,10 +59,10 @@ public:
 class HeadUnit:VehiclePart{
 public:
     void start() override{
-        cout<<"hu start"<<endl;
+        std::cout<<"hu start"<<std::endl;
     }
     void stop() override{
-        cout<<"hu stop"<<endl;
+        std::cout<<"hu stop"<<std::endl;
     }
 };
 
@@ -70,10 +70,10 @@ public:
 class ElectronicControlUnit:VehiclePart{
 public:
     void start() override{
-        cout<<"ecu start"<<endl;
+        std::cout<<"ecu start"<<std::endl;
     }
     void stop() override{
-        cout<<"ecu stop"<<endl;
+        std::cout<<"ecu stop"<<std::endl;
     }
 };
 
@@ -81,10 +81,10 @@ public:
 class Sensor:VehiclePart{
 public:
     void start() override{
-        cout<<"sensor start"<<endl;
+        std::cout<<"sensor start"<<std::endl;
     }
     void stop() override{
-        cout<<"sensor stop"<<endl;
+        std::cout<<"sensor stop"<<std::endl;
     }
 };
 
@@ -96,7 +96,7 @@ public:
     }
 public:
     void start() {
-        cout<<"vehcile start"<<endl;
+        std::cout<<"vehcile start"<<std::endl;
         engine.start();
         transmission.start();
         hu.start();
@@ -104,7 +104,7 @@ public:
         sensor.start();
     }
     void stop() {
-        cout<<"vehcile stop"<<endl;
+        std::cout<<"vehcile stop"<<std::endl;
         sensor.stop();
         ecu.stop();
         hu.stop();
@@ -113,11 +113,11 @@ public:
  
     }
     void speedUp(){
-        cout<<"vehcile speed up"<<endl;
+        std::cout<<"vehcile speed up"<<std::endl;
         transmission.speedUp();
     }
     void slowDown(){
-        cout<<"vehcile slow down"<<endl;
+        std::cout<<"vehcile slow down"<<std::endl;
         transmission.slowDown();
     }
 private:

@@ -15,7 +15,7 @@
 #include "facade/facade.hpp"
 #include "builder/builder.hpp"
 #include "adapter/adapter.hpp"
-using namespace std;
+#include "memorandum/memorandum.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -67,7 +67,7 @@ int main(int argc, const char * argv[]) {
     class TestOber:public observer::Notifyer{
     public:
         void notify(const char* msg) override{
-            cout<<msg<<endl;
+            std::cout<<msg<<std::endl;
         }
     };
     
@@ -155,5 +155,19 @@ int main(int argc, const char * argv[]) {
 
 
 
+    //备忘录模式
+    memorandum::MusicPlayer musicPlayer;
+    musicPlayer.setSong("jj");
+    musicPlayer.setRatio(0.5f);
+    //备忘录管理者
+    memorandum::MusicPlayerCaretaker musicCaretaker;
+    //存储memo
+    musicCaretaker.setContext(musicPlayer.save());
+    
+    musicPlayer.setSong("jj-1");
+    musicPlayer.setRatio(0.8f);
+    //加载memo
+    musicPlayer.load(musicCaretaker.getContext());
+    
     return 0;
 }
