@@ -165,10 +165,10 @@ int main(int argc, const char * argv[]) {
     //存储memo
     musicCaretaker.setContext(musicPlayer.save()); //save返回备忘录，根据MusicPlayer定制的PlayerContext
     
-    musicPlayer.setSong("jj-1");
-    musicPlayer.setRatio(0.8f);
+    musicPlayer.setSong("jj-1"); //测试修改
+    musicPlayer.setRatio(0.8f);  //测试修改
     //加载memo
-    musicPlayer.load(musicCaretaker.getContext());
+    musicPlayer.load(musicCaretaker.getContext()); //load后还原为保存时刻的信息
     
     musicCaretaker.setContext(nullptr);
     delete musicCaretaker.getContext();
