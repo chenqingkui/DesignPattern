@@ -3,7 +3,6 @@
 
 #include <iostream>
 namespace factory {
-    using namespace std;
 
     #define CLASS_NAME(name) #name
 
@@ -14,10 +13,10 @@ namespace factory {
             
         }
         virtual void driving(){
-            cout << "moving" << endl;
+            std::cout << "moving" << std::endl;
         }
         virtual void brake(){
-            cout << "brake" << endl;
+            std::cout << "brake" << std::endl;
         }
     };
 
@@ -25,10 +24,10 @@ namespace factory {
     class Car: public Vehicle{
     public:
         void driving() override{
-            cout << CLASS_NAME(Car) << " "  << "moving" << endl;
+            std::cout << CLASS_NAME(Car) << " "  << "moving" << std::endl;
         }
         void brake() override{
-            cout << CLASS_NAME(Car)<< " "  << "brake" << endl;
+            std::cout << CLASS_NAME(Car)<< " "  << "brake" << std::endl;
         }
     };
 
@@ -36,10 +35,10 @@ namespace factory {
     class Suv : public Vehicle{
     public:
         void driving() override{
-            cout << CLASS_NAME(Suv) << " "  << "moving" << endl;
+            std::cout << CLASS_NAME(Suv) << " "  << "moving" << std::endl;
         }
         void brake() override{
-            cout << CLASS_NAME(Suv) << " "  << "brake" << endl;
+            std::cout << CLASS_NAME(Suv) << " "  << "brake" << std::endl;
         }
     };
 
@@ -47,10 +46,10 @@ namespace factory {
     class PickupTruck:public Vehicle{
     public:
         void driving() override{
-            cout << CLASS_NAME(PickupTruck)  << " " << "moving" << endl;
+            std::cout << CLASS_NAME(PickupTruck)  << " " << "moving" << std::endl;
         }
         void brake() override{
-            cout << CLASS_NAME(PickupTruck) << " " << "brake" << endl;
+            std::cout << CLASS_NAME(PickupTruck) << " " << "brake" << std::endl;
         }
     };
 
@@ -68,10 +67,10 @@ namespace factory {
     class ElectricalCar: public Car{
     public:
         void driving() override{
-            cout << CLASS_NAME(ElectricalCar) << " "  << "moving" << endl;
+            std::cout << CLASS_NAME(ElectricalCar) << " "  << "moving" << std::endl;
         }
         void brake() override{
-            cout << CLASS_NAME(ElectricalCar)<< " "  << "brake" << endl;
+            std::cout << CLASS_NAME(ElectricalCar)<< " "  << "brake" << std::endl;
         }
     };
 
@@ -79,10 +78,10 @@ namespace factory {
     class ElectricalSuv : public Vehicle{
     public:
         void driving() override{
-            cout << CLASS_NAME(ElectricalSuv) << " "  << "moving" << endl;
+            std::cout << CLASS_NAME(ElectricalSuv) << " "  << "moving" << std::endl;
         }
         void brake() override{
-            cout << CLASS_NAME(ElectricalSuv) << " "  << "brake" << endl;
+            std::cout << CLASS_NAME(ElectricalSuv) << " "  << "brake" << std::endl;
         }
     };
 
@@ -90,10 +89,10 @@ namespace factory {
     class ElectricalPickupTruck:public Vehicle{
     public:
         void driving() override{
-            cout << CLASS_NAME(ElectricalPickupTruck)  << " " << "moving" << endl;
+            std::cout << CLASS_NAME(ElectricalPickupTruck)  << " " << "moving" << std::endl;
         }
         void brake() override{
-            cout << CLASS_NAME(ElectricalPickupTruck) << " " << "brake" << endl;
+            std::cout << CLASS_NAME(ElectricalPickupTruck) << " " << "brake" << std::endl;
         }
     };
 
@@ -102,10 +101,10 @@ namespace factory {
     class FuelCar: public Car{
     public:
         void driving() override{
-            cout << CLASS_NAME(FuelCar) << " "  << "moving" << endl;
+            std::cout << CLASS_NAME(FuelCar) << " "  << "moving" << std::endl;
         }
         void brake() override{
-            cout << CLASS_NAME(FuelCar)<< " "  << "brake" << endl;
+            std::cout << CLASS_NAME(FuelCar)<< " "  << "brake" << std::endl;
         }
     };
 
@@ -113,10 +112,10 @@ namespace factory {
     class FuelSuv : public Vehicle{
     public:
         void driving() override{
-            cout << CLASS_NAME(FuelSuv) << " "  << "moving" << endl;
+            std::cout << CLASS_NAME(FuelSuv) << " "  << "moving" << std::endl;
         }
         void brake() override{
-            cout << CLASS_NAME(FuelSuv) << " "  << "brake" << endl;
+            std::cout << CLASS_NAME(FuelSuv) << " "  << "brake" << std::endl;
         }
     };
 
@@ -124,10 +123,10 @@ namespace factory {
     class FuelPickupTruck:public Vehicle{
     public:
         void driving() override{
-            cout << CLASS_NAME(FuelPickupTruck)  << " " << "moving" << endl;
+            std::cout << CLASS_NAME(FuelPickupTruck)  << " " << "moving" << std::endl;
         }
         void brake() override{
-            cout << CLASS_NAME(FuelPickupTruck) << " " << "brake" << endl;
+            std::cout << CLASS_NAME(FuelPickupTruck) << " " << "brake" << std::endl;
         }
     };
 }

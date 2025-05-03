@@ -13,7 +13,6 @@
 //迭代器模式
 namespace Iterator{
 
-using namespace std;
 //车辆生产流程类型
 enum class VehicleProcessType{
     Unknown = 0,//未知
@@ -57,45 +56,45 @@ public:
 template<typename T>
 class ConcreteIterator :public Iterator<T>{
 public:
-    ConcreteIterator(const vector<T>& elements){
+    ConcreteIterator(const std::vector<T>& elements){
         this->elements = elements;
         this->index =0;
     }
     bool next() override{
         if(elements.empty()){
-            cout<<"ConcreteIterator::next empty"<<endl;
+            std::cout<<"ConcreteIterator::next empty"<<std::endl;
             return false;
         }
         index++;
-        cout<<"ConcreteIterator::next index:"<<index<<endl;
+        std::cout<<"ConcreteIterator::next index:"<<index<<std::endl;
         return true;
     }
     bool hasNext() override{
         if(elements.empty()){
-            cout<<"ConcreteIterator::hasnext empty"<<endl;
+            std::cout<<"ConcreteIterator::hasnext empty"<<std::endl;
             return false;
         }
         if(index >= elements.size()){
-            cout<<"ConcreteIterator::hasnext overfow"<<endl;
+            std::cout<<"ConcreteIterator::hasnext overfow"<<std::endl;
             return false;
         }
-        cout<<"ConcreteIterator::hasnext index "<<index<< " true"<<endl;
+        std::cout<<"ConcreteIterator::hasnext index "<<index<< " true"<<std::endl;
         return true;
     }
     T get() override{
         if(elements.empty()){
-            cout<<"ConcreteIterator::get empty" << endl;
+            std::cout<<"ConcreteIterator::get empty" << std::endl;
             return T();
         }
         if(index >= elements.size()){
-            cout<<"ConcreteIterator::get index overflow" << endl;
+            std::cout<<"ConcreteIterator::get index overflow" << std::endl;
             return T();
         }
-        cout<<"ConcreteIterator::get value:"<<elements[index]<<endl;
+        std::cout<<"ConcreteIterator::get value:"<<elements[index]<<std::endl;
         return elements[index];
     }
 private:
-    vector<T> elements;
+    std::vector<T> elements;
     int index{0};
 };
 
@@ -127,7 +126,7 @@ public:
         return new ConcreteIterator<T>(elements);
     }
 private:
-    vector<T> elements;
+    std::vector<T> elements;
 };
 
 }

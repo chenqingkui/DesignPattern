@@ -226,7 +226,6 @@ private:
     std::unique_ptr<Adapter> adapter{nullptr};
 };
 
-
 }
 
 
