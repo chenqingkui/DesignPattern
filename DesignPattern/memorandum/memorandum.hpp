@@ -24,10 +24,6 @@ public:
 public:
     virtual void load() = 0;
     virtual std::string save() = 0;
-    virtual void setSong(const std::string& song) = 0;
-    virtual void setRatio(float ratio) = 0;
-    virtual std::string getSong() = 0;
-    virtual float getRatio() = 0;
 };
 
 
@@ -52,20 +48,20 @@ public:
         playingContext = saveStream.str();
         return playingContext;
     }
-    void setSong(const std::string& song) override{
+    void setSong(const std::string& song){
         playingSong = song;
         std::cout<<"song:"<<song<<std::endl;
 
     }
-    void setRatio(float ratio) override{
+    void setRatio(float ratio) {
         playingRatio = ratio;
         std::cout<<"ratio:"<<ratio<<std::endl;
     }
-    std::string getSong() override{
+    std::string getSong() {
         return playingSong;
 
     }
-    float getRatio() override{
+    float getRatio() {
         return playingRatio;
     }
 private:
@@ -87,13 +83,13 @@ public:
             return;
         }
         context->load();
-        playingSong = context->getSong();
-        playingRatio = context->getRatio();
+        playingSong = static_cast<PlayerContext*>(context)->getSong();
+        playingRatio = static_cast<PlayerContext*>(context)->getRatio();
     }
     Context* save(){
         Context* context = new PlayerContext();
-        context->setSong(playingSong);
-        context->setRatio(playingRatio);
+        static_cast<PlayerContext*>(context)->setSong(playingSong);
+        static_cast<PlayerContext*>(context)->setRatio(playingRatio);
         context->save();
         return context;
     }

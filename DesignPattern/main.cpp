@@ -169,5 +169,8 @@ int main(int argc, const char * argv[]) {
     //加载memo
     musicPlayer.load(musicCaretaker.getContext());
     
+    musicCaretaker.setContext(nullptr);
+    delete musicCaretaker.getContext();
+ 
     return 0;
 }
