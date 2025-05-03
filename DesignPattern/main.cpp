@@ -156,13 +156,14 @@ int main(int argc, const char * argv[]) {
 
 
     //备忘录模式
+    //备忘录发起者
     memorandum::MusicPlayer musicPlayer;
     musicPlayer.setSong("jj");
     musicPlayer.setRatio(0.5f);
     //备忘录管理者
     memorandum::MusicPlayerCaretaker musicCaretaker;
     //存储memo
-    musicCaretaker.setContext(musicPlayer.save());
+    musicCaretaker.setContext(musicPlayer.save()); //save返回备忘录，根据MusicPlayer定制的PlayerContext
     
     musicPlayer.setSong("jj-1");
     musicPlayer.setRatio(0.8f);
