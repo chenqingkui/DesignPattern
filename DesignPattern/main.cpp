@@ -17,6 +17,7 @@
 #include "adapter/adapter.hpp"
 #include "memorandum/memorandum.hpp"
 #include "flyweight/flyweight.hpp"
+#include "decorator/decorator.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -190,8 +191,18 @@ int main(int argc, const char * argv[]) {
     leftDown->move();
     rightDown->move();
     
-
     
+    //装饰者模式
+    decorator::CarSeat* carSeat =  new decorator::CarSeat("nappa",1,1000);
+    decorator::HeatedSeat decorHeat(carSeat,500);
+    //座椅加热
+    decorHeat.sit();
+    decorHeat.getCost();
+    decorator::VentilatedSeat decorVSeat(&decorHeat,800);
+    //座椅通风
+    decorVSeat.sit();
+    decorVSeat.getCost();
+    delete carSeat;
     
     return 0;
 }
