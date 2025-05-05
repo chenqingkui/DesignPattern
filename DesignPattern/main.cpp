@@ -18,6 +18,7 @@
 #include "memorandum/memorandum.hpp"
 #include "flyweight/flyweight.hpp"
 #include "decorator/decorator.hpp"
+#include "chain/chain.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -204,5 +205,19 @@ int main(int argc, const char * argv[]) {
     decorVSeat.getCost();
     delete carSeat;
     
+    
+    //职责链模式
+    chain::Chain* afterSales = new chain::AfterSales();
+    chain::Chain* engineer = new chain::Engineer();
+    chain::Chain* manager = new chain::Manager();
+    chain::Chain* president = new chain::President();
+
+    afterSales->setNext(engineer);
+    engineer->setNext(manager);
+    manager->setNext(president);
+    
+    afterSales->deal("crash 1000 times;");
+    delete afterSales;
     return 0;
 }
+
