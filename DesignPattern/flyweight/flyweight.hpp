@@ -74,7 +74,7 @@ public:
                 tyres[brand][size] = flyTyre;
             }
         }
-        std::cout<<"flyweight tyre tyre:"<<flyTyre<<std::endl;
+        std::cout<<"flyweight tyre:"<<flyTyre<<std::endl;
         return flyTyre;
     }
 private:
