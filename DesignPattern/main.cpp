@@ -16,6 +16,7 @@
 #include "builder/builder.hpp"
 #include "adapter/adapter.hpp"
 #include "memorandum/memorandum.hpp"
+#include "flyweight/flyweight.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -173,5 +174,24 @@ int main(int argc, const char * argv[]) {
     musicCaretaker.setContext(nullptr); //context置空
     delete musicCaretaker.getContext(); //释放内存
  
+    
+    
+    //享元模式
+    //车辆安装轮胎，多组轮胎，品牌和大小一致，一组创建一个实例
+    //get出来的不用释放，由享元工厂释放
+    flyweight::FlyweightTyreRoom room; //轮胎车间
+    flyweight::FlyweightTyre* leftUp = room.getFlyweightTyre("good",19);
+    flyweight::FlyweightTyre* rightUp = room.getFlyweightTyre("good",19);
+    flyweight::FlyweightTyre* leftDown = room.getFlyweightTyre("good",19);
+    flyweight::FlyweightTyre* rightDown = room.getFlyweightTyre("good",19);
+    
+    leftUp->move();    //get出来无需释放，由享元工厂释放
+    rightUp->move();
+    leftDown->move();
+    rightDown->move();
+    
+
+    
+    
     return 0;
 }
