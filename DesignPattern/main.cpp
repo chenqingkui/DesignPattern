@@ -21,6 +21,7 @@
 #include "chain/chain.hpp"
 #include "prototype/prototype.hpp"
 #include "command/command.hpp"
+#include "status/status.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -255,6 +256,11 @@ int main(int argc, const char * argv[]) {
     envCommander.doCommand();
 
 
+    //状态模式
+    status::MusicPlayerUI statusMusicUi;
+    statusMusicUi.updateTime();
+    
+   
     return 0;
 }
 
