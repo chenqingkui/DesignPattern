@@ -19,6 +19,7 @@
 #include "flyweight/flyweight.hpp"
 #include "decorator/decorator.hpp"
 #include "chain/chain.hpp"
+#include "prototype/prototype.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -218,6 +219,17 @@ int main(int argc, const char * argv[]) {
     
     afterSales->deal("crash 1000 times;");
     delete afterSales;
+    
+    
+    //原型模式
+    auto orderTimeNow = std::chrono::system_clock::now();
+    auto orderTimeMs = std::chrono::duration_cast<std::chrono::milliseconds>(orderTimeNow.time_since_epoch()).count();
+    prototype::SalesOrder srcOrder(orderTimeMs,"q","12312341234",5089);
+    srcOrder.info();
+    prototype::Prototype* clonedOrder = srcOrder.clone();
+    clonedOrder->info();
+    
+    
     return 0;
 }
 
