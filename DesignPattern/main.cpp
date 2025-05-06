@@ -20,6 +20,7 @@
 #include "decorator/decorator.hpp"
 #include "chain/chain.hpp"
 #include "prototype/prototype.hpp"
+#include "command/command.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -161,21 +162,21 @@ int main(int argc, const char * argv[]) {
 
     //备忘录模式
     //备忘录发起者
-    memorandum::MusicPlayer musicPlayer;
-    musicPlayer.setSong("jj");
-    musicPlayer.setRatio(0.5f);
+    memorandum::MusicPlayer memoMusicPlayer;
+    memoMusicPlayer.setSong("jj");
+    memoMusicPlayer.setRatio(0.5f);
     //备忘录管理者
-    memorandum::MusicPlayerCaretaker musicCaretaker;
+    memorandum::MusicPlayerCaretaker memoMusicCaretaker;
     //存储memo
-    musicCaretaker.setContext(musicPlayer.save()); //save返回备忘录，根据MusicPlayer定制的PlayerContext
+    memoMusicCaretaker.setContext(memoMusicPlayer.save()); //save返回备忘录，根据MusicPlayer定制的PlayerContext
     
-    musicPlayer.setSong("jj-1"); //测试修改
-    musicPlayer.setRatio(0.8f);  //测试修改
+    memoMusicPlayer.setSong("jj-1"); //测试修改
+    memoMusicPlayer.setRatio(0.8f);  //测试修改
     //加载memo
-    musicPlayer.load(musicCaretaker.getContext()); //load后还原为保存时刻的信息
+    memoMusicPlayer.load(memoMusicCaretaker.getContext()); //load后还原为保存时刻的信息
     
-    musicCaretaker.setContext(nullptr); //context置空
-    delete musicCaretaker.getContext(); //释放内存
+    memoMusicCaretaker.setContext(nullptr); //context置空
+    delete memoMusicCaretaker.getContext(); //释放内存
  
     
     
@@ -230,6 +231,30 @@ int main(int argc, const char * argv[]) {
     clonedOrder->info();
     
     
+    //命令模式
+    command::EnviormentCommander envCommander;
+    command::MusicPlayer cmdMusicPlayer;
+    command::MusicCommand musicPlay("playing",&cmdMusicPlayer);
+    envCommander.addCommand(&musicPlay);
+    command::MusicCommand musicPause("pause",&cmdMusicPlayer);
+    envCommander.addCommand(&musicPause);
+    command::MusicCommand musicNext("next",&cmdMusicPlayer);
+    envCommander.addCommand(&musicNext);
+    command::MusicCommand musicResume("resume",&cmdMusicPlayer);
+    envCommander.addCommand(&musicResume);
+    
+    envCommander.cancleCommand(&musicPause);
+    envCommander.cancleCommand(&musicResume);
+    
+    command::Navigation navi;
+    command::NavigationCommand naviReroute("reroute",&navi);
+    envCommander.addCommand(&naviReroute);
+    command::NavigationCommand naviPlaning("planing",&navi);
+    envCommander.addCommand(&naviPlaning);
+
+    envCommander.doCommand();
+
+
     return 0;
 }
 
