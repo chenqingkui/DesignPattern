@@ -26,6 +26,7 @@
 #include "proxy/proxy.hpp"
 #include "mediate/mediate.hpp"
 #include "bridge/bridge.hpp"
+#include "visitor/visitor.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -299,6 +300,17 @@ int main(int argc, const char * argv[]) {
     bridge::VideoPlayer bridgeVideo(&bridgeAmd);
     bridgeMusic.aiWorking();
     bridgeVideo.aiWorking();
+
+    
+    //访问者模式
+    visitor::Screen visitorScreen;
+    visitor::Button visitorButton;
+
+    visitor::HardwareVistior visitorHardware;
+    visitorScreen.accept(&visitorHardware);
+    visitorButton.accept(&visitorHardware);
+
+
 
     return 0;
 }
