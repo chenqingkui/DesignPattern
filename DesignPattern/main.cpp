@@ -22,6 +22,7 @@
 #include "prototype/prototype.hpp"
 #include "command/command.hpp"
 #include "status/status.hpp"
+#include "strategy/strategy.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -261,6 +262,15 @@ int main(int argc, const char * argv[]) {
     statusMusicUi.updateTime();
     
    
+    //策略模式
+    strategy::SalesPromotion strategySales;
+    strategy::Top100OrderStrategy strategy100;
+    strategySales.setStrategy(&strategy100);
+    strategySales.getDiscount();
+    
+    strategy::Deposit3W strategy3W;
+    strategySales.setStrategy(&strategy3W);
+    strategySales.getDiscount();
     return 0;
 }
 
