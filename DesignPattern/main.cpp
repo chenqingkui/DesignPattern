@@ -25,6 +25,7 @@
 #include "strategy/strategy.hpp"
 #include "proxy/proxy.hpp"
 #include "mediate/mediate.hpp"
+#include "bridge/bridge.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -289,6 +290,15 @@ int main(int argc, const char * argv[]) {
     mediateSeller.setMediator(&mediater);
     mediateSeller.send();
     mediater.deal();
+
+    
+    //桥接模式
+    bridge::NvidaGPU bridgeNv;
+    bridge::AMDGPU bridgeAmd;
+    bridge::MusicPlayer bridgeMusic(&bridgeNv);
+    bridge::VideoPlayer bridgeVideo(&bridgeAmd);
+    bridgeMusic.aiWorking();
+    bridgeVideo.aiWorking();
 
     return 0;
 }
