@@ -23,6 +23,7 @@
 #include "command/command.hpp"
 #include "status/status.hpp"
 #include "strategy/strategy.hpp"
+#include "proxy/proxy.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -271,6 +272,13 @@ int main(int argc, const char * argv[]) {
     strategy::Deposit3W strategy3W;
     strategySales.setStrategy(&strategy3W);
     strategySales.getDiscount();
+    
+    
+    //代理模式
+    proxy::Owner vehicleOwner("owner","1234");
+    proxy::Proxyer vehicleProxyer("proxyer","5678",&vehicleOwner);
+    vehicleProxyer.registration();
+    
     return 0;
 }
 
