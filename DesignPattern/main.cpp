@@ -24,6 +24,7 @@
 #include "status/status.hpp"
 #include "strategy/strategy.hpp"
 #include "proxy/proxy.hpp"
+#include "mediate/mediate.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -279,6 +280,16 @@ int main(int argc, const char * argv[]) {
     proxy::Proxyer vehicleProxyer("proxyer","5678",&vehicleOwner);
     vehicleProxyer.registration();
     
+    //中介模式
+    mediate::VehicleBuyer mediateBuyer;
+    mediate::VehicleSeller mediateSeller;
+    mediate::VehicleMediator mediater(&mediateBuyer,&mediateSeller);
+    mediateBuyer.setMediator(&mediater);
+    mediateBuyer.send();
+    mediateSeller.setMediator(&mediater);
+    mediateSeller.send();
+    mediater.deal();
+
     return 0;
 }
 
