@@ -8,6 +8,29 @@
 #ifndef design_pattern_template_method_h
 #define design_pattern_template_method_h
 namespace template_method{
+
+//+---------------------+
+//|     <<abstract>>    |
+//|      Recommend      |
+//+---------------------+
+//| + ~Recommend()      |
+//+---------------------+
+//| + recommend(): str  |
+//| # search(): str = 0 |
+//| # rank(str): void=0 |
+//| # match(str): str=0 |
+//+----------↑----------+
+//           |
+//           | 继承
+//           |
+//+----------↓-------------------+
+//|      MusicSongRecommend      |
+//+------------------------------+
+//| + search(): str              |
+//| + rank(str): void            |
+//| + match(str): str            |
+//+------------------------------+
+
 //音乐推荐
 class Recommend{
 public:
