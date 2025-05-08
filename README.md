@@ -4,5 +4,3 @@ design pattern c++
 在build下执行
 cmake ../DesignPattern 生成命令行应用程序
 或者生成xcode工程或vs工程 cmake ../DesignPattern -G "Xcode"
-
-
