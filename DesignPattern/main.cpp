@@ -28,6 +28,7 @@
 #include "bridge/bridge.hpp"
 #include "visitor/visitor.hpp"
 #include "publisher/publisher.hpp"
+#include "template_method/template_method.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -320,6 +321,13 @@ int main(int argc, const char * argv[]) {
     delete pubMusic;
     pubSys.publish("systme pause");
 
+    
+    //模板方法模式
+    template_method::Recommend* recommend = nullptr;
+    template_method::MusicSongRecommend songRecommend;
+    recommend = &songRecommend;
+    std::string recommendResult = recommend->recommend();
+    std::cout<<recommendResult<<std::endl;
     return 0;
 }
 
