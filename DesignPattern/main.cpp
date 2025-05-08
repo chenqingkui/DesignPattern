@@ -27,6 +27,7 @@
 #include "mediate/mediate.hpp"
 #include "bridge/bridge.hpp"
 #include "visitor/visitor.hpp"
+#include "publisher/publisher.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -311,6 +312,13 @@ int main(int argc, const char * argv[]) {
     visitorButton.accept(&visitorHardware);
 
 
+    //发布者订阅者模式
+    publisher::SystemPool pubPool;
+    publisher::System pubSys(&pubPool);
+    publisher::MusicPlayer* pubMusic = new publisher::MusicPlayer(&pubPool);
+    pubSys.publish("systme boot");
+    delete pubMusic;
+    pubSys.publish("systme pause");
 
     return 0;
 }
