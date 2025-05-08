@@ -29,6 +29,7 @@
 #include "visitor/visitor.hpp"
 #include "publisher/publisher.hpp"
 #include "template_method/template_method.hpp"
+#include "interpreter/interpreter.hpp"
 int main(int argc, const char * argv[]) {
 
     //简单工厂
@@ -328,6 +329,13 @@ int main(int argc, const char * argv[]) {
     recommend = &songRecommend;
     std::string recommendResult = recommend->recommend();
     std::cout<<recommendResult<<std::endl;
+    
+    
+    //解释器模式
+    interpreter::NavigationInterprerter naviInterperter;
+    interpreter::SpitInterprerter splitInterperter;
+    interpreter::Context interContext(&naviInterperter,&splitInterperter);
+    interContext.run("planing,guiding,quit");
     return 0;
 }
 
